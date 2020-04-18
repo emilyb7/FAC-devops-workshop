@@ -1,0 +1,2 @@
+- install eslint `yarn add eslint` and `yarn eslint --init`
+- install prettier
