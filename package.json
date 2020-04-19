@@ -17,9 +17,12 @@
     "prettier": "^2.0.4",
     "tape": "^4.13.2"
   },
+  "scripts": {
+    "test": "tape test.js | yarn tap-spec-emoji"
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn eslint . --fix"
+      "pre-commit": "yarn eslint . --fix && yarn test"
     }
   }
 }
