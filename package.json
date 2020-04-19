@@ -22,7 +22,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn eslint . --fix && yarn test"
+      "pre-commit": "yarn prettier . --write && yarn eslint . --fix && yarn test"
     }
   }
 }

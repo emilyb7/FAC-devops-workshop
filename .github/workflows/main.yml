@@ -1,7 +1,6 @@
 ---
 # This is a basic workflow to help you get started with Actions
 
-
 name: CI
 
 # Controls when the action will run.
@@ -11,7 +10,7 @@ on:
   push:
     branches: [master]
   pull_request:
-    branches: ['*']
+    branches: ["*"]
 
 # A workflow run is made up of one or more jobs
 # that can run sequentially or in parallel
