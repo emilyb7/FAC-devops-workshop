@@ -1,0 +1,11 @@
+---
+name: deploy
+
+on: deployment_status
+
+jobs:
+  report_status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: report
+        run: echo 'hello!'
