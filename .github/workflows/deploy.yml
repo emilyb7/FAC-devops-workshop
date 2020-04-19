@@ -4,12 +4,13 @@ name: deploy
 on: deployment_status
 
 jobs:
-  report_status:
+  post_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: report
+      - name: status_check
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
           APP_URL: ${{ github.event.deployment.payload.web_url }}
         run: |
           sh -c "curl --silent --show-error --fail $APP_URL"
+          echo "App successfully deployed to $APP_URL 🎉🎉"
