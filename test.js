@@ -13,8 +13,8 @@ test("server test", { timeout: 500 }, (t) => {
     .get("/")
     .expect(200)
     .end((err, res) => {
-      console.log(res)
       t.error(err);
+      t.equals(res.text, 'Hello, world!')
       t.end();
     });
 });
