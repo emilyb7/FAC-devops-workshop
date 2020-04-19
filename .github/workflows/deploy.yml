@@ -12,7 +12,7 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo "$GITHUB_CONTEXT"
-          echo "$GITHUB_CONTEXT.event"
+          echo ${{ github.event.deployment.payload.web_url }}
           # echo ${{GITHUB_CONTEXT.event}}
           # echo ${{GITHUB_CONTEXT.event.deployment}}
           # echo ${{GITHUB_CONTEXT.event.deployment.payload.web_url}}
