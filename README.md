@@ -1,2 +1,18 @@
 - install eslint `yarn add eslint` and `yarn eslint --init`
 - install prettier
+- install husky
+- use husky to run prettier and eslint
+- create first github action, run linter on PR. Test breaking changes.
+- Install tape + tap spec, create a failing test
+- Create test command in package.json
+- Use husky to run tests as pre-commit hook
+- test making the commit fail
+- fix the tests. Make a github action. Run action on PR.
+- Test breaking the build.
+- Fix the tests. Simple TDD server workflow, hello world.
+- Make a heroku app, link to github repo, automatic deploys to master branch, wait for CI to pass before deploying
+- Create deployment action, wait deployment status hook from heroku. Verify whether app is running. (Could replace with a Node.js script)
+- Check that alerts working when deployment fails
+- Consider a rollback strategy
+- Consider what to do if everything goes wrong
+- Fix your app 🚑
