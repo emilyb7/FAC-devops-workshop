@@ -10,5 +10,12 @@ jobs:
       - name: report
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
+          APP_URL: ${{ github.event.deployment.payload.web_url }}
         run: |
-          echo ${{ github.event.deployment.payload.web_url }}
+          status_code=$(curl --write-out %{http_code} --silent --output /dev/null "$URL")
+          if [[ "$status_code" -ne 200 ]] ; then
+            echo "Site status changed to $status_code"
+            exit 1
+          else
+            exit 0
+          fi
