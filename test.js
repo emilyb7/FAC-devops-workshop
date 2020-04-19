@@ -14,7 +14,7 @@ test("server test", { timeout: 500 }, (t) => {
     .expect(200)
     .end((err, res) => {
       t.error(err);
-      t.equals(res.text, 'Hello, world!')
+      t.equals(res.text, "Hello, world!");
       t.end();
     });
 });
