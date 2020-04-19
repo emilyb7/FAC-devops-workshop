@@ -15,14 +15,16 @@
     "eslint-plugin-prettier": "^3.1.3",
     "husky": "^4.2.5",
     "prettier": "^2.0.4",
+    "tap-pessimist": "^1.0.1",
     "tape": "^4.13.2"
   },
   "scripts": {
-    "test": "tape test.js | yarn tap-spec-emoji"
+    "test": "tape test.js | yarn tap-spec-emoji",
+    "test:quiet": "tape test.js | yarn tap-pessimist"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn prettier . --write && yarn eslint . --fix && yarn test"
+      "pre-commit": "yarn prettier . --write && yarn eslint . --fix && yarn test:quiet"
     }
   }
 }
