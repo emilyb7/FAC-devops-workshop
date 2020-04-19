@@ -8,4 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: report
-        run: echo ${{ github.event }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+          echo ${{ github.event }}
