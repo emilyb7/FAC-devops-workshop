@@ -20,12 +20,14 @@
     "tape": "^4.13.2"
   },
   "scripts": {
-    "test": "tape test.js | yarn tap-spec-emoji",
-    "test:quiet": "tape test.js | yarn tap-pessimist"
+    "test": "./node_modules/.bin/tape test.js | ./node_modules/.bin/tap-spec-emoji",
+    "test:quiet": "./node_modules/.bin/tape test.js | ./node_modules/.bin/tap-pessimist",
+    "prettier": "./node_modules/.bin/prettier . --write",
+    "eslint": "./node_modules/.bin/eslint . --fix"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn prettier . --write && yarn eslint . --fix && yarn test:quiet"
+      "pre-commit": "npm run prettier && npm run eslint && npm run test:quiet"
     }
   }
 }
