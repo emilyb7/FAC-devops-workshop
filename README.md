@@ -2,7 +2,7 @@
 
 A (mostly) pain-free workflow for deploying a Node.js app
 
-*(I wrote this for a talk I'm giving, sorry if it looks like random nonsense)*
+_(I wrote this for a talk I'm giving, sorry if it looks like random nonsense)_
 
 Some principles I want to follow here:
 
@@ -60,18 +60,19 @@ This will make sure your code is clean and formatted and free of syntax errors b
 
 You can do loads of other things with Git hooks, like running your tests or enforcing good commit message style.
 
-
 ### Enforcing checks
 
 Husky has already provided us with a minimal CI (continuous integration) tool, which will allow us to commit clean and error-free code.
 
 Some benefits of using Husky to manage pre-commit hooks:
+
 - You can easily enforce some rules/checks for your project
 - You can share these with other developers who you're working with
 - If you're in a hurry and want to commit code without running the checks, you can just run `git commit --no-verify`
 - You get fast feedback on your work without relying on a remote server
 
 Why Husky isn't always enough...
+
 - It's not enforced (you can skip it)
 - Your local environment might be quite different to the server where your app runs in production
 - You have no record of success or failure, no history of things that might have gone wrong with your code in the past (no artifacts - this might not seem important right now, but sometimes it's a really valuable thing)
@@ -96,7 +97,6 @@ This is the custom bit needed to run eslint:
 
 This is surprisingly simple. I didn't even need to tell it I'm running Node, or that I'm using yarn!
 
-
 ### Test your Github action
 
 You won't know youre action works until you've seen it fail!
@@ -109,7 +109,6 @@ Fix your code. Commit again, and watch everything go green.
 
 Tip: make sure no one can merge a broken branch into master by going to your project settings, `-> branches -> protect matching branches -> "require status checks to pass before merging"`
 
-
 ### Running tests
 
 I'm using tape for my project. In `test.js` you'll see a test checking that my Express app returns `Hello, world!` and a 200 status code on requrests to `/`.
@@ -117,7 +116,6 @@ I'm using tape for my project. In `test.js` you'll see a test checking that my E
 Before writing any code to make the tests pass, I updated my husky config and my github action and made sure that these fail.
 
 Then I wrote the code to make the test go green. I created the `test:quiet` command to run as part of the pre-commit hook, so that my terminal doesn't fill out with output from my tests.
-
 
 ### Deploying to Heroku
 
@@ -129,7 +127,6 @@ I cut some some corners here. Here's how I'm managing my deployment workflow:
 2. Go to "deployment" in your app settings
 3. Under "Deployment method", tick "GitHub"
 4. Enable automatic deploys from the master branch (that means everytime you merge something into master, your changes will go straight to Heroku)
-
 
 This is what would be better (but more work for a small project):
 
@@ -147,7 +144,6 @@ There are lots of third party services that will measure your "uptime" (how many
 
 If that fails, we'll get an alert (GitHub actions automatically sends you a notification when a job fails, but you could set up additional alerting, e.g. via your team's Slack).
 
-
 ### Sometimes apps just break
 
 Deployments aren't the only thing that can break your app. Downtime is unavailable. If uptime is important to you, you could set up an action that runs on a schedule and checks that your app is up and running.
@@ -155,7 +151,6 @@ Deployments aren't the only thing that can break your app. Downtime is unavailab
 If you want to do more than just check for a 200 status code, you could also check the page contents (in our case, it should say "Hello, World!")
 
 For anything more complicated, you could consider using a browser-based integration testing tool like Cypress.
-
 
 ## Rollback strategy
 

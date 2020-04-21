@@ -2,7 +2,6 @@ const test = require("tape");
 const request = require("supertest");
 const app = require("./app");
 
-const sohil;
 test("example test", (t) => {
   t.equal(1 + 1, 2, "should be 2");
   t.end();
