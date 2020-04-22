@@ -25,16 +25,13 @@ Here's a step-by-step guide as to how I went about setting up this project.
 
 ### Local setup
 
-We'll be using `yarn` here, but this can easily be switched out for NPM.
+We'll be using NPM here, but this can easily be switched out for yarn.
 
-Set up your project and accept the default configuration by running `yarn init --y`
+Set up your project and accept the default configuration by running `npm init --y`
 
 We'll start by installing some basic tools: eslint and prettier. See my example Eslint config. I'm using airbnb's config as a base, because it enforces good practices and requires minimal custom configuration.
 
-Create a test file, `test.js`. Add some simple code, like `console.log("Hello, world!")`. Check that prettier and eslint run properly. Here are some basic commmands:
-
-`yarn eslint . --fix`
-`yarn prettier . --write`
+Create a test file, `test.js`. Add some simple code, like `console.log("Hello, world!")`. Check that prettier and eslint run properly. There are some example commands in the package.json file.
 
 ### Automating formatting and checks
 
@@ -42,7 +39,7 @@ We don't want to have to run those commands manually everytime, so we're going t
 
 Husky is a great tool for configuring shared git hooks. That means you and anyone else you're collaborating with can share the same commit hooks.
 
-Install husky by running `yarn add husky --dev`
+Install husky by running `npm install husky --save-dev`
 
 _Husky relies on a post-install hook to do some essential setup on your project. If you've (very sensibly) disabled scripts via yarn or NPM, you'll need to re-enable this setting before installing husky. If you don't know what this means, just ignore and skip to the next bit._
 
@@ -51,7 +48,7 @@ To get husky running, you can add this block of code to your `package.json`
 ```
 "husky": {
   "hooks": {
-    "pre-commit": "yarn prettier . --write && yarn eslint . --fix"
+    "pre-commit": "npm run prettier && npm run eslint"
   }
 }
 ```
@@ -85,7 +82,7 @@ CI providers give us a really powerful tool. Most of them let us run our code on
 
 I copied GitHub's example action when creating my `build` job (workflows/main.yml).
 
-This is the custom bit needed to run eslint:
+This is the custom bit needed to run eslint. We'll use yarn here, since it works nicely with GitHub actions.
 
 ```
 - name: Install
