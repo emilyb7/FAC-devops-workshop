@@ -2,7 +2,9 @@ const Express = require("express");
 
 const app = Express();
 
-let emily = "hello Emily";
+const emily = "hello Emily";
+const franny = "hello Emily";
+const hello = "hello";
 
 app.get("/", (req, res) => res.send("Hello, world!"));
 
