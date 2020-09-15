@@ -1,3 +1,5 @@
+![status](https://github.com/emilyb7/actions-test/workflows/CI/badge.svg)
+
 # Deploying with GitHub actions and heroku
 
 A (mostly) pain-free workflow for deploying a Node.js app
@@ -41,7 +43,7 @@ Husky is a great tool for configuring shared git hooks. That means you and anyon
 
 Install husky by running `npm install husky --save-dev`
 
-_Husky relies on a post-install hook to do some essential setup on your project. If you've (very sensibly) disabled scripts via yarn or NPM, you'll need to re-enable this setting before installing husky. If you don't know what this means, just ignore and skip to the next bit._
+_Husky relies on a post-install hook to do some essential setup on your project. If you've (very sensibly) disabled scripts via npm, you'll need to re-enable this setting before installing husky. If you don't know what this means, just ignore and skip to the next bit._
 
 To get husky running, you can add this block of code to your `package.json`
 
@@ -82,17 +84,17 @@ CI providers give us a really powerful tool. Most of them let us run our code on
 
 I copied GitHub's example action when creating my `build` job (workflows/main.yml).
 
-This is the custom bit needed to run eslint. We'll use yarn here, since it works nicely with GitHub actions.
+This is the custom bit needed to run eslint.
 
 ```
 - name: Install
-  run: yarn install
+  run: npm install
 
 - name: Lint
-  run: yarn eslint .
+  run: npm run lint
 ```
 
-This is surprisingly simple. I didn't even need to tell it I'm running Node, or that I'm using yarn!
+This is surprisingly simple. We don't even need to tell GitHub actions that we're using node or npm (although I've specified a node version just to make sure the tests on CI are consistent with my local environment).
 
 ### Test your Github action
 

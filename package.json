@@ -23,11 +23,11 @@
     "test": "./node_modules/.bin/tape test.js | ./node_modules/.bin/tap-spec-emoji",
     "test:quiet": "./node_modules/.bin/tape test.js | ./node_modules/.bin/tap-pessimist",
     "prettier": "./node_modules/.bin/prettier . --write",
-    "eslint": "./node_modules/.bin/eslint . --fix"
+    "lint": "./node_modules/.bin/eslint . --fix"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettier && npm run eslint && npm run test:quiet"
+      "pre-commit": "npm run prettier && npm run lint && npm run test:quiet"
     }
   }
 }
