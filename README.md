@@ -1,3 +1,5 @@
+![status](https://github.com/emilyb7/actions-test/workflows/CI/badge.svg)
+
 # Deploying with GitHub actions and heroku
 
 A (mostly) pain-free workflow for deploying a Node.js app
