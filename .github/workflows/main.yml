@@ -12,12 +12,11 @@ on:
   pull_request:
     branches: ["*"]
 
-# A workflow run is made up of one or more jobs
-# that can run sequentially or in parallel
+# A workflow run is made up of one or more jobs (sets of checks or steps)
 jobs:
   # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
+    # The type of runner (machine) that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks
@@ -27,18 +26,20 @@ jobs:
       # so your job can access it
       - uses: actions/checkout@v2
 
+      # Ensure GitHub actions uses the latest Node.js version
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
 
-      # Runs a single command using the runners shell
+      # Install packages from our package.json
       - name: Install
         run: npm install
 
+      # Lint all the code
       - name: Lint
         run: npm run lint
 
-      # Runs a set of commands using the runners shell
+      # Run the tests
       - name: Test
         run: npm test
