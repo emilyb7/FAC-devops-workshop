@@ -103,13 +103,13 @@ Some benefits of using Husky to manage pre-commit hooks:
 
 - You can easily enforce some rules/checks for your project
 - You can share these with other developers who you're working with
-- You get fast feedback on your work without relying on a remote server (this point might sounds confusing right now, but you should hopefully understand better by the end of the workshop what this means)
+- You get fast feedback on your work without relying on a remote server (this point might sound confusing right now, but you should hopefully understand better by the end of the workshop what this means)
 
 **But** Husky doesn't actually **force** us to follow our own rules. We can disable it anytime but just changing the package.json and changing it back again.
 
 Or, even easier, if you really want to commit your dirty code, you can just run `git commit --no-verify -m <your-commit-message>`.
 
-This is fine. It's just our local branch. You can go wild with it, but do so consciously. But we really, really don't want bad code to end up in the master branch.
+This is fine. It's just our local branch. You can go wild with it, but do so consciously. But we really, really don't want bad code to end up in the main branch.
 
 For this reason, we're going to use GitHub actions to run the linter on all pull requests made in our repo. This will run the same checks as we do locally, but it'll do so on a _remote server_ instead of on our machines. If ESLint finds bad code, we won't be able to merge our PR.
 
@@ -117,7 +117,7 @@ CI providers give us a really powerful tool. Most of them let us run our code on
 
 I copied GitHub's example action when creating my `build` job (workflows/main.yml).
 
-This is the custom bit needed to run Eslint.
+This is the custom bit needed to run ESlint.
 
 ```
 - name: Install
@@ -139,7 +139,7 @@ You should see your action fail.
 
 Fix your code. Commit again, and watch everything go green.
 
-I recommend changing your GitHub project settings to require all status checks to pass before allowing you to merge into master!
+I recommend changing your GitHub project settings to require all status checks to pass before allowing you to merge into main!
 
 ### Step 5: Adding tests to our workflow
 
@@ -167,13 +167,13 @@ I cut some some corners here. Here's how I'm managing my deployment workflow:
 1. Create app via Heroku UI
 2. Go to "deployment" in your app settings
 3. Under "Deployment method", tick "GitHub"
-4. Enable automatic deploys from the master branch (that means every time you merge something into master, your changes will go straight to Heroku)
+4. Enable automatic deploys from the main branch (that means every time you merge something into main, your changes will go straight to Heroku)
 
 Here is what I would do if I had a little more time, but you'll probably find it to be overkill for a smallish project:
 
 1. Create and configure your app from within your repo (I would use [Terraform](https://www.terraform.io/) but there are other solutions)
 2. Write a deployment script using the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli), and create a GitHub action for this
-3. Deploy automatically every time your master branch is updated on GitHub
+3. Deploy automatically every time your main branch is updated on GitHub
 
 This is better because **all the configuration lives in our code**, and Heroku doesn't do any extra magic for us.
 
@@ -183,7 +183,7 @@ I deployed my app to Heroku but it looks like, in spite of all my testing, I've 
 
 https://actions-test-2020.herokuapp.com/
 
-Luckily, I realised straight away. But what if you push your code to master, go to make yourself a cup of tea, get caught up talking to your product manager, and within 20 minutes, your app has been broken for 500 paying users?
+Luckily, I realised straight away. But what if you push your code to main, go to make yourself a cup of tea, get caught up talking to your product manager, and within 20 minutes, your app has been broken for 500 paying users?
 
 How can you avoid this? (Try and think about what you could do before reading my solution below!)
 
@@ -195,7 +195,7 @@ If that fails, we'll get an alert (GitHub actions automatically sends you a noti
 
 ### Sometimes apps just break
 
-Deployments aren't the only thing that can break your app. Downtime is unavailable. If uptime is important to you, you could set up an action that runs on a schedule and checks that your app is up and running.
+Deployments aren't the only thing that can break your app. Downtime is inevitable. If uptime is important to you, you could set up an action that runs on a schedule and checks that your app is up and running.
 
 If you want to do more than just check for a 200 status code, you could also check the page contents (in our case, it should say "Hello, World!")
 
