@@ -74,7 +74,7 @@ I've created scripts for these two commands because they're really useful and I 
 
 Now I can just run `npm run lint` whenever I want.
 
-### Step 3: automation
+### Step 2: automation
 
 ESLint and prettier are great tools but we don't want to remember to run commands _every_ time we change our code.
 
