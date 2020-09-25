@@ -88,11 +88,13 @@ You can create Git Hooks manually by writing bash scripts and adding them the th
 
 A nice JavaScript library called [Husky](https://github.com/typicode/husky) is a much nicer way of doing this.
 
-Let's install husky 🐶 `npm install husky --save --dev`
+**Task**
 
-Take a look at husky's documentation. Can you do the following?
+Install husky as a dev dependency for your project 🐶
 
-- Create a hook that ensures all code is formatted with prettier before committing
+Take a look at husky's documentation and try to do the following:
+
+- Create a hook that ensures all code is formatted with prettier before you can commit
 - Create a hook that runs ESLint before committing; it should prevent the commit if you have any errors
 
 (Shout if you have issues getting Husky working, it can be a bit fiddly sometimes depending on your setup and your operating system!)
