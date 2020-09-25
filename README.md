@@ -58,11 +58,15 @@ You'll need to install the following dev dependencies to make it work:
 
 Create a test file, `test.js`.
 
-Create some badly formatted code as an example. Let's run prettier and check that it formats our code how we like it:
+Write some badly formatted code as an example.
+
+Run prettier and check that it formats our code how we like it:
 
 `./node_modules/.bin/prettier . --write`
 
-(if your text editor is already formatting your JavaScript files for you, you should turn this off temporarily just to check that the command works for you; we're going to need it to work again later)
+(for a reminder of how running scripts like this works, check this [intro to NPM](https://github.com/foundersandcoders/npm-introduction#npm-scripts))
+
+**Tip**: if your text editor is already formatting your JavaScript files for you, you should turn this off temporarily just to check that the command works for you; we're going to need it to work again later)
 
 Let's add some more code, such as a dirty `console.log("hello")`. Prettier won't mind, but ESLint should warn you that console.logs don't belong in your production code.
 
