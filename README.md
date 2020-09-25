@@ -119,7 +119,7 @@ I copied GitHub's example action when creating my `build` job (workflows/main.ym
 
 This is the custom bit needed to run ESlint.
 
-```
+```yml
 - name: Install
   run: npm install
 
@@ -131,7 +131,7 @@ This is the custom bit needed to run ESlint.
 
 You won't know your action works until you've seen it fail!
 
-Use my example and the documentation [here](https://docs.github.com/en/actions/quickstart) to create an action that runs ESLint over your JavaScript files.
+Use my example (main.yml) and the documentation [here](https://docs.github.com/en/actions/quickstart) to create an action that runs ESLint over your JavaScript files.
 
 Break something in your `test.js` file, commit with `--no-verify` and wait for your action to run on GitHub (you just need to go to the actions tab)
 
@@ -139,7 +139,7 @@ You should see your action fail.
 
 Fix your code. Commit again, and watch everything go green.
 
-I recommend changing your GitHub project settings to require all status checks to pass before allowing you to merge into main!
+I really recommend changing your GitHub project settings to require all status checks to pass before allowing you to merge into main.
 
 ### Step 5: Adding tests to our workflow
 
@@ -156,7 +156,7 @@ See if you can do the following without copying from my example:
 - Fix your tests!
 - Add a new test for an Express app, and make it pass
 
-Tip: I created the `test:quiet` command to run as part of the pre-commit hook, so that my terminal doesn't fill up with output from my tests.
+Tip: I created the `test:quiet` command to run as part of the pre-commit hook, so that my terminal doesn't fill up with output from my tests each time I commit.
 
 ### Step 6: Deployment
 
@@ -185,17 +185,17 @@ https://actions-test-2020.herokuapp.com/
 
 Luckily, I realised straight away. But what if you push your code to main, go to make yourself a cup of tea, get caught up talking to your product manager, and within 20 minutes, your app has been broken for 500 paying users?
 
-How can you avoid this? (Try and think about what you could do before reading my solution below!)
+How can you avoid this? Try and think about what you could do before reading my solution below. (You don't need to know how).
 
 ---
 
 There are lots of third party services that will measure your "uptime" (how many minutes per day your app is working for). But I've done something simpler here. In `workflows/deployment.yml` I've got another action that will listen for deployment status changes from Heroku. If something changes, it will make a simple HTTP request to our app.
 
-If that fails, we'll get an alert (GitHub actions automatically sends you a notification when a job fails, but you could set up additional alerting, e.g. via your team's Slack).
+If that fails, we'll get an alert (GitHub actions automatically sends you an email notification when a job fails, but you could set up additional alerting, e.g. via your team's Slack).
 
 ### Sometimes apps just break
 
-Deployments aren't the only thing that can break your app. Downtime is inevitable. If uptime is important to you, you could set up an action that runs on a schedule and checks that your app is up and running.
+Deployments aren't the only thing that can break your app. Downtime is inevitable. If uptime is important to you, you could set up an action that runs on a schedule (e.g. every hour throughout the day) and checks that your app is up and running.
 
 If you want to do more than just check for a 200 status code, you could also check the page contents (in our case, it should say "Hello, World!")
 
